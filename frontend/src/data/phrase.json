@@ -1,0 +1,26 @@
+{
+  "recoil": {
+    "comparison": "Retroceso con un {percentage}% menos de fuerza"
+  },
+  "durability": {
+    "comparison": "Durabilidad con un {percentage}% más de resistencia"
+  },
+  "capacity": {
+    "comparison": "Capacidad del cargador con un {percentage}% más de balas"
+  },
+  "caliber": {
+    "comparison": "Calibre con un {percentage}% mayor impacto"
+  },
+  "rate_of_fire": {
+    "comparison": "Cadencia con un {percentage}% más de velocidad de disparo"
+  },
+  "mobility": {
+    "comparison": "Movilidad con un {percentage}% mejor manejo"
+  },
+  "weight": {
+    "comparison": "Peso con un {percentage}% menor"
+  },
+  "length": {
+    "comparison": "Longitud con un {percentage}% más compacta"
+  }
+}

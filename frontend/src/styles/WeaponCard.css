@@ -1,0 +1,102 @@
+.weapon-cards-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Exactamente 3 columnas */
+  gap: 16px; /* Espacio entre las tarjetas */
+  padding: 20px; /* Espaciado interno opcional */
+  justify-items: center; /* Centra las tarjetas horizontalmente */
+}
+
+.card {
+  width: 400px;
+  height: 500px;
+  perspective: 1000px;
+}
+
+.card-front,
+.card-back {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.6s;
+  border: 2px solid gold;
+  color: aliceblue;
+}
+
+.card-front {
+  transform: rotateY(0deg);
+}
+
+.card-back {
+  transform: rotateY(180deg);
+}
+
+.card.flipped .card-front {
+  transform: rotateY(180deg);
+}
+
+.card.flipped .card-back {
+  transform: rotateY(360deg);
+}
+
+.weapon-image {
+  max-width: 100%;
+  height: auto;
+  margin: 10px 0;
+}
+
+.weapon-image-small {
+  width: 250px;
+  height: auto;
+}
+
+.weapon-stats {
+  list-style: none;
+  padding: 0;
+}
+
+.weapon-stats li {
+  margin: 5px 0;
+}
+
+/* Asegúrate de que las estrellas no llenas sean grises */
+.star {
+  color: gray;
+  font-size: 20px; /* Ajusta según lo necesites */
+}
+.btnfinal {
+  background-color: gold;
+  width: 100px;
+  height: 30px;
+  border-color: gold;
+  margin-bottom: 0px;
+  cursor: pointer;
+}
+#cap {
+  margin-top: 10px;
+}
+/* Las estrellas llenas deben ser doradas */
+.star.filled {
+  color: gold;
+}
+@media (max-width: 768px) {
+  .weapon-cards-container {
+    grid-template-columns: repeat(
+      2,
+      1fr
+    ); /* 2 columnas en pantallas más pequeñas */
+  }
+}
+
+@media (max-width: 480px) {
+  .weapon-cards-container {
+    grid-template-columns: 1fr; /* 1 columna en pantallas muy pequeñas */
+  }
+}

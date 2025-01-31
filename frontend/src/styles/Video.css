@@ -1,0 +1,36 @@
+.vid {
+  display: flex;
+}
+.video-container {
+  display: flex;
+  margin-top: 150px;
+  z-index: 10;
+  position: absolute;
+  margin-left: -20%;
+  width: 50%;
+}
+
+.view-more-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: gold;
+  color: #fff;
+  border: none;
+  width: 100%;
+  border-radius: 5px;
+  height: 50px;
+}
+
+.view-more-button:hover {
+  background-color: #b39e00;
+}
+.bannervid {
+  transition: height 0.3s ease;
+  height: 100px; /* Altura inicial */
+  overflow: hidden; /* Opcional para evitar contenido desbordado */
+}
+
+.bannervid.expanded {
+  height: 400px; /* Altura inicial + 400px */
+}

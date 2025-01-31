@@ -1,0 +1,243 @@
+.comparison-box {
+  background-color: black;
+  color: white;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  /* Puedes ajustar el ancho como desees */
+  /* Establecer un ancho máximo para no hacer el contenedor demasiado grande en pantallas grandes */
+}
+
+.comparison-box h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.comparison-grid {
+  display: flex;
+  justify-content: space-between; /* Distribuye los elementos de manera horizontal */
+  gap: 20px; /* Espacio entre las armas */
+}
+
+.comparison-item {
+  display: flex;
+  flex-direction: column; /* Coloca la imagen y el nombre de manera vertical */
+  align-items: center;
+  background-color: black;
+  padding: 10px;
+  border: 2px solid gold;
+  /* Ajusta el tamaño de cada arma */
+  transition: transform 0.3s ease;
+}
+
+.comparison-item:hover {
+  transform: scale(
+    1.05
+  ); /* Añade un efecto de agrandamiento al pasar el mouse */
+}
+
+.comparison-item img {
+  width: 300px; /* Ajusta el tamaño de las imágenes de las armas */
+  height: 150px;
+  border-radius: 5px;
+  margin-bottom: 10px; /* Espacio debajo de la imagen */
+}
+
+.comparison-item h4 {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.comparison-item p {
+  font-size: 14px;
+}
+
+.remove-button {
+  cursor: pointer;
+  background-color: rgb(190, 5, 5);
+  width: 100px;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  border-color: rgb(108, 10, 10);
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.remove-button:hover {
+  background-color: darkred;
+}
+.comparison-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.comparison-grid {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.comparison-results {
+  background-color: #222;
+  color: white;
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+
+  flex-grow: 1;
+}
+
+.comparison-results h4 {
+  margin-bottom: 10px;
+}
+
+.comparison-results table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.comparison-results th,
+.comparison-results td {
+  padding: 5px;
+  text-align: center;
+  border: 1px solid white;
+}
+.details-cell {
+  background-color: #f9f9f9;
+  padding: 10px;
+  text-align: left;
+}
+
+.expand-button {
+  padding: 5px 10px;
+  font-size: 0.9em;
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 3px;
+}
+
+.expand-button:hover {
+  background-color: #0056b3;
+}
+.comparison-box {
+  width: 100%;
+  padding: 20px;
+  background-color: black;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+  color: gold;
+}
+
+.comparison-box h3 {
+  text-align: center;
+  color: gold;
+}
+
+.comparison-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.comparison-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.comparison-item h4 {
+  color: white;
+  margin: 0;
+  font-size: 16px;
+}
+
+.best-attributes {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.best-weapon {
+  width: 45%;
+  background-color: black;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.best-weapon h5 {
+  color: gold;
+  text-align: center;
+}
+
+.best-weapon ul {
+  list-style-type: none;
+  padding-left: 0;
+  color: white;
+}
+
+.best-weapon ul li {
+  background-color: black;
+  margin: 8px 0;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 2px solid gold;
+}
+
+.best-weapon ul li:last-child {
+  background-color: black;
+}
+
+table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+  background-color: black;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 2px solid gold;
+}
+
+table th,
+table td {
+  padding: 12px;
+  text-align: center;
+  border: 1px solid white;
+}
+
+table th {
+  background-color: black;
+  color: gold;
+  font-weight: bold;
+}
+
+table td {
+  color: white;
+}
+
+table tr:nth-child(even) {
+  background-color: black;
+}
+
+@media (max-width: 768px) {
+  .best-attributes {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .best-weapon {
+    width: 80%;
+    margin-bottom: 20px;
+  }
+}

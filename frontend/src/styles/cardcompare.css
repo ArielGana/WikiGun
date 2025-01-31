@@ -1,0 +1,41 @@
+.weapon-cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.weapon-card {
+  background: black;
+  border: 2px solid gold;
+  border-radius: 10px;
+  overflow: hidden;
+  width: 200px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.weapon-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
+.weapon-card-image {
+  width: 100%;
+  height: 150px;
+  object-fit: contain;
+}
+
+.weapon-card-title {
+  color: #fff;
+  font-size: 1.2rem;
+  margin: 10px 0;
+  font-weight: bold;
+}
+
+.no-weapons-message {
+  color: #fff;
+  font-size: 1rem;
+  text-align: center;
+}

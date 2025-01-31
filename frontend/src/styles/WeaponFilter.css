@@ -1,0 +1,72 @@
+.weapon-page {
+  display: flex;
+  background-color: black;
+  color: white;
+  min-height: 100vh;
+}
+
+.weapon-filter-container {
+  padding: 20px;
+  border-right: 1px solid #333;
+}
+
+.filter-section h3,
+.search-section h3 {
+  margin-bottom: 10px;
+}
+
+.filter-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.filter-section li {
+  padding: 8px;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-bottom: 5px;
+  transition: background-color 0.2s ease;
+  width: 100%;
+  width: 170px;
+}
+
+.filter-section li:hover,
+.filter-section li.selected {
+  background-color: goldenrod;
+}
+
+.search-section input {
+  width: 170px;
+  padding: 10px;
+  border: 1px solid gold;
+  border-radius: 4px;
+  background-color: black;
+  color: white;
+}
+
+.weapon-cards {
+  width: 75%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.weapon-card {
+  background-color: black;
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.weapon-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.2);
+}
+
+.weapon-card img {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
