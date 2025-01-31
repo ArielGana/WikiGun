@@ -21,9 +21,3 @@ app.use("/api/cloudinary", cloudRoutes);
 app.get("/", (req, res) => {
   res.send("¡Bienvenido al backend de Sitio de gun!");
 });
-
-// Puerto y inicio del servidor
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`Servidor corriendo en http://localhost:${PORT}`);
-});
