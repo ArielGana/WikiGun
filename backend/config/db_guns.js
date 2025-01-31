@@ -1,16 +1,19 @@
-//config/db_guns.js
+// config/db_guns.js
 require("dotenv").config(); // Cargar las variables de entorno
+const { Client } = require("pg"); // Usar el cliente de PostgreSQL
 
-const mysql = require("mysql2");
+// Parsear la DATABASE_URL
+const connectionString = process.env.DATABASE_URL;
 
-const dbGuns = mysql.createConnection({
-  host: process.env.DB_HOST1, // Variables de la base de datos de armas
-  user: process.env.DB_USER1,
-  password: process.env.DB_PASSWORD1,
-  database: process.env.DB_NAME1,
-  port: process.env.DB_PORT1,
+// Crear una nueva instancia del cliente de PostgreSQL
+const dbGuns = new Client({
+  connectionString: connectionString,
+  ssl: {
+    rejectUnauthorized: false, // Necesario para conexiones SSL con Supabase
+  },
 });
 
+// Función para conectar a la base de datos
 const connectDBGuns = () => {
   return new Promise((resolve, reject) => {
     dbGuns.connect((err) => {
