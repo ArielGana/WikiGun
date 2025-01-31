@@ -1,10 +1,9 @@
 const express = require("express");
-const cors = require("cors"); // Importa cors
+const cors = require("cors");
 const armasRoutes = require("./routes/routes_gunsdb");
-const cloudRoutes = require("./config/cloud"); // Importa las rutas de Cloudinary
+const cloudRoutes = require("./config/cloud");
 
 const app = express();
-const port = 5000;
 
 // Middleware para manejar JSON
 app.use(express.json());
@@ -16,9 +15,7 @@ app.use(cors());
 app.use("/api", armasRoutes);
 
 // Usar las rutas de Cloudinary
-app.use("/api/cloudinary", cloudRoutes); // Cambié la ruta base a /api/cloudinary
+app.use("/api/cloudinary", cloudRoutes);
 
-// Iniciar el servidor
-app.listen(port, () => {
-  console.log(`Servidor corriendo en http://localhost:${port}`);
-});
+// Exportar la aplicación para Vercel
+module.exports = app;
