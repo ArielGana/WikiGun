@@ -18,11 +18,10 @@ app.use("/api", armasRoutes);
 // Usar las rutas de Cloudinary
 app.use("/api/cloudinary", cloudRoutes);
 
-// Exportar la aplicación para Vercel
+// Ruta de inicio
 app.get("/", (req, res) => {
   res.send("¡Bienvenido al backend de Sitio de gun!");
 });
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`Servidor corriendo en http://localhost:${PORT}`);
-});
+
+// Exportar la aplicación para Vercel
+module.exports = app;
