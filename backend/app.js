@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const armasRoutes = require("./routes/routes_gunsdb");
@@ -20,4 +21,8 @@ app.use("/api/cloudinary", cloudRoutes);
 // Exportar la aplicación para Vercel
 app.get("/", (req, res) => {
   res.send("¡Bienvenido al backend de Sitio de gun!");
+});
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
