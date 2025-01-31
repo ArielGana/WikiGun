@@ -1,29 +1,18 @@
-// config/db_guns.js
-require("dotenv").config(); // Cargar las variables de entorno
-const { Client } = require("pg"); // Usar el cliente de PostgreSQL
+const postgres = require("postgres");
 
-// Parsear la DATABASE_URL
 const connectionString = process.env.DATABASE_URL;
 
-// Crear una nueva instancia del cliente de PostgreSQL
-const dbGuns = new Client({
-  connectionString: connectionString,
-  ssl: {
-    rejectUnauthorized: false, // Necesario para conexiones SSL con Supabase
-  },
+const sql = postgres(connectionString, {
+  ssl: "require", // Obligamos a usar SSL
 });
 
-// Función para conectar a la base de datos
-const connectDBGuns = () => {
-  return new Promise((resolve, reject) => {
-    dbGuns.connect((err) => {
-      if (err) {
-        reject("Error al conectar con la base de datos de Armas: " + err);
-      } else {
-        resolve("Conexión exitosa a la base de datos de Armas");
-      }
-    });
+// Probar la conexión
+sql`SELECT 1`
+  .then(() => {
+    console.log("Conexión exitosa");
+  })
+  .catch((err) => {
+    console.error("Error conectando a la base de datos:", err);
   });
-};
 
-module.exports = { dbGuns, connectDBGuns };
+module.exports = sql;
