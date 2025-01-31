@@ -15,5 +15,6 @@
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js"
-  }
+  },
+  "proxy": "https://wiki-gun-ariels-projects-1cd169f9.vercel.app/"
 }
