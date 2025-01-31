@@ -16,7 +16,7 @@ const Gallery = ({ weaponName }) => {
 
   useEffect(() => {
     if (weaponName) {
-      fetch(`http://localhost:5000/api/cloudinary/gun/${weaponName}`)
+      fetch(`https://wiki-gun.vercel.app/api/cloudinary/gun/${weaponName}`)
         .then((response) => response.json())
         .then((data) => {
           const filteredImages = data.filter(
@@ -32,7 +32,7 @@ const Gallery = ({ weaponName }) => {
     const fetchDesmanImages = async () => {
       try {
         const response = await fetch(
-          `http://localhost:5000/api/cloudinary/carpet/${weaponName}`
+          `https://wiki-gun.vercel.app/api/cloudinary/carpet/${weaponName}`
         );
         const data = await response.json();
         setDesman(data[0]);

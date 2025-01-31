@@ -11,7 +11,7 @@ const WeaponCard = ({ category }) => {
       if (category) {
         try {
           const response = await fetch(
-            `http://localhost:5000/api/armas?category=${category}`
+            `https://wiki-gun.vercel.app/api/armas?category=${category}`
           );
           const data = await response.json();
           setWeapons(data);

@@ -26,7 +26,7 @@ const InfoArmas = () => {
             category.charAt(0).toUpperCase() + category.slice(1);
 
           const response = await fetch(
-            `http://localhost:5000/api/guncompare?table=${formattedCategory}&id=${weaponId}`
+            `https://wiki-gun.vercel.app/api/guncompare?table=${formattedCategory}&id=${weaponId}`
           );
 
           console.log(formattedCategory); // Loguea el nombre de category con la primera letra en mayúscula

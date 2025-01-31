@@ -29,7 +29,7 @@ const WeaponFilter = () => {
     const fetchWeapons = async () => {
       try {
         const response = await fetch(
-          "http://localhost:5000/api/armas/nombres-categorias"
+          "https://wiki-gun.vercel.app/api/armas/nombres-categorias"
         );
         const data = await response.json();
         setWeapons(data);
