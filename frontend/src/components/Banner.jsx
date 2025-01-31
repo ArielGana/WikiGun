@@ -9,7 +9,7 @@ const Banner = () => {
   const fetchImages = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:5000/api/cloudinary/images"
+        "https://wiki-gun.vercel.app//api/cloudinary/images"
       );
       setImages(response.data);
     } catch (error) {
