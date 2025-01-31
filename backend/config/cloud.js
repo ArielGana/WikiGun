@@ -2,9 +2,10 @@
 require("dotenv").config();
 const express = require("express");
 const cloudinary = require("cloudinary").v2;
-
+const cors = require("cors");
+const app = express();
 const router = express.Router();
-
+app.use(cors());
 // Configuración de Cloudinary
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
