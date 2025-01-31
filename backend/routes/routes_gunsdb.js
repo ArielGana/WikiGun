@@ -1,5 +1,14 @@
 const express = require("express");
+const { Pool } = require("pg"); // Importamos el cliente PostgreSQL
 const router = express.Router();
+
+// Configuración de la conexión a PostgreSQL usando DATABASE_URL
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL, // Usamos la variable de entorno
+  ssl: {
+    rejectUnauthorized: false, // Necesario si usas SSL (por ejemplo, en Heroku)
+  },
+});
 
 // Ruta para obtener las armas por categoría
 router.get("/armas", async (req, res) => {
