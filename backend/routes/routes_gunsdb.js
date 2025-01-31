@@ -1,11 +1,8 @@
-//routes/routes_gunsdb.js
 const express = require("express");
-const { dbGuns } = require("../config/db_guns"); // Importamos la conexión ya establecida (dbGuns)
-
 const router = express.Router();
 
 // Ruta para obtener las armas por categoría
-router.get("/armas", (req, res) => {
+router.get("/armas", async (req, res) => {
   const { category } = req.query; // Obtenemos la categoría desde los parámetros de consulta
   const validCategories = [
     "Pistolas",
@@ -26,19 +23,21 @@ router.get("/armas", (req, res) => {
     return res.status(400).json({ message: "Categoría no válida" });
   }
 
-  // Construimos la consulta dinámica basada en la categoría
-  const query = `SELECT * FROM ${normalizedCategory}`;
+  try {
+    // Construimos la consulta dinámica basada en la categoría
+    const query = `SELECT * FROM ${normalizedCategory}`;
 
-  // Ejecutamos la consulta en la base de datos
-  dbGuns.query(query, (err, results) => {
-    if (err) {
-      console.error("Error al obtener las armas", err);
-      return res.status(500).json({ message: "Error al obtener las armas" });
-    }
-    return res.status(200).json(results); // Devolvemos los resultados como JSON
-  });
+    // Ejecutamos la consulta en la base de datos
+    const { rows } = await pool.query(query);
+    return res.status(200).json(rows); // Devolvemos los resultados como JSON
+  } catch (err) {
+    console.error("Error al obtener las armas", err);
+    return res.status(500).json({ message: "Error al obtener las armas" });
+  }
 });
-router.get("/armas/nombres-categorias", (req, res) => {
+
+// Ruta para obtener nombres, imágenes y categorías de todas las armas
+router.get("/armas/nombres-categorias", async (req, res) => {
   const validCategories = [
     "Pistolas",
     "Escopetas",
@@ -49,39 +48,33 @@ router.get("/armas/nombres-categorias", (req, res) => {
     "Fusilesfrancotirador",
   ]; // Lista de categorías válidas
 
-  // Creamos un array para manejar las promesas de consulta
-  const queries = validCategories.map((category) => {
-    const query = `SELECT *, '${category}' AS category FROM ${category}`;
-    return new Promise((resolve, reject) => {
-      dbGuns.query(query, (err, results) => {
-        if (err) {
-          return reject(err);
-        }
-        resolve(results); // Devuelve los resultados
-      });
+  try {
+    // Creamos un array para manejar las promesas de consulta
+    const queries = validCategories.map((category) => {
+      const query = `SELECT *, '${category}' AS category FROM ${category}`;
+      return pool.query(query);
     });
-  });
 
-  // Ejecutamos todas las promesas
-  Promise.all(queries)
-    .then((results) => {
-      // Combinamos los resultados en un único array
-      const allWeapons = results.flat();
-      res.status(200).json(allWeapons);
-    })
-    .catch((err) => {
-      console.error(
+    // Ejecutamos todas las promesas
+    const results = await Promise.all(queries);
+
+    // Combinamos los resultados en un único array
+    const allWeapons = results.flatMap((result) => result.rows);
+    res.status(200).json(allWeapons);
+  } catch (err) {
+    console.error(
+      "Error al obtener los nombres, imágenes y categorías de las armas",
+      err
+    );
+    res.status(500).json({
+      message:
         "Error al obtener los nombres, imágenes y categorías de las armas",
-        err
-      );
-      res.status(500).json({
-        message:
-          "Error al obtener los nombres, imágenes y categorías de las armas",
-      });
     });
+  }
 });
+
 // Ruta para obtener datos de una tabla por ID
-router.get("/guncompare", (req, res) => {
+router.get("/guncompare", async (req, res) => {
   const { table, id } = req.query; // Obtenemos el nombre de la tabla y el ID desde los parámetros de consulta
 
   const validTables = [
@@ -104,24 +97,24 @@ router.get("/guncompare", (req, res) => {
     return res.status(400).json({ message: "ID no válido" });
   }
 
-  // Construimos la consulta dinámica con los parámetros validados
-  const query = `SELECT * FROM ${table} WHERE id_arma = ?`;
+  try {
+    // Construimos la consulta dinámica con los parámetros validados
+    const query = `SELECT * FROM ${table} WHERE id_arma = $1`;
 
-  // Ejecutamos la consulta en la base de datos
-  dbGuns.query(query, [id], (err, results) => {
-    if (err) {
-      console.error("Error al realizar la consulta", err);
-      return res.status(500).json({ message: "Error al realizar la consulta" });
-    }
+    // Ejecutamos la consulta en la base de datos
+    const { rows } = await pool.query(query, [id]);
 
-    if (results.length === 0) {
+    if (rows.length === 0) {
       return res.status(404).json({
         message: "No se encontró ningún registro con el ID especificado",
       });
     }
 
-    return res.status(200).json(results); // Devolvemos los resultados como JSON
-  });
+    return res.status(200).json(rows); // Devolvemos los resultados como JSON
+  } catch (err) {
+    console.error("Error al realizar la consulta", err);
+    return res.status(500).json({ message: "Error al realizar la consulta" });
+  }
 });
 
 module.exports = router;
