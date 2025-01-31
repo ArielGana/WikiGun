@@ -1,8 +1,8 @@
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
-const armasRoutes = require("./routes/routes_gunsdb");
-const cloudRoutes = require("./config/cloud");
+const armasRoutes = require("../routes/routes_gunsdb");
+const cloudRoutes = require("../config/cloud");
 
 const app = express();
 
