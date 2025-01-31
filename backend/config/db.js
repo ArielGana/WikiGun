@@ -1,26 +1,18 @@
-//config/db.js
-require("dotenv").config(); // Cargar las variables de entorno
+const postgres = require("postgres");
 
-const mysql = require("mysql2");
+const connectionString = process.env.DATABASE_URL;
 
-const db = mysql.createConnection({
-  host: process.env.DB_HOST, // Variables de la base de datos principal
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME,
-  port: process.env.DB_PORT,
+const sql = postgres(connectionString, {
+  ssl: "require", // Obligamos a usar SSL
 });
 
-const connectDB = () => {
-  return new Promise((resolve, reject) => {
-    db.connect((err) => {
-      if (err) {
-        reject("Error al conectar con la base de datos: " + err);
-      } else {
-        resolve("Conexión exitosa a la base de datos");
-      }
-    });
+// Probar la conexión
+sql`SELECT 1`
+  .then(() => {
+    console.log("Conexión exitosa");
+  })
+  .catch((err) => {
+    console.error("Error conectando a la base de datos:", err);
   });
-};
 
-module.exports = { db, connectDB };
+module.exports = sql;
