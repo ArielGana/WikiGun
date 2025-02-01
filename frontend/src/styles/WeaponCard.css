@@ -1,15 +1,17 @@
 .weapon-cards-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Exactamente 3 columnas */
-  gap: 16px; /* Espacio entre las tarjetas */
-  padding: 20px; /* Espaciado interno opcional */
-  justify-items: center; /* Centra las tarjetas horizontalmente */
+  grid-template-columns: repeat(3, 1fr); /* 3 columnas en pantallas grandes */
+  gap: 16px;
+  padding: 20px;
+  justify-items: center;
 }
 
 .card {
-  width: 400px;
-  height: 500px;
+  width: 100%; /* Para que se ajuste mejor a cualquier tamaño */
+  max-width: 350px; /* Máximo de 350px para hacer las tarjetas más pequeñas */
+  height: 450px; /* Reducción de la altura */
   perspective: 1000px;
+  cursor: pointer; /* Añadir cursor pointer para indicar que es interactivo */
 }
 
 .card-front,
@@ -25,7 +27,7 @@
   background-color: black;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: transform 0.6s;
+  transition: transform 0.6s ease; /* Añadir ease para una transición suave */
   border: 2px solid gold;
   color: aliceblue;
 }
@@ -43,9 +45,12 @@
 }
 
 .card.flipped .card-back {
-  transform: rotateY(360deg);
+  transform: rotateY(
+    0deg
+  ); /* Cambiado a 0deg para que el reverso sea visible */
 }
 
+/* Imágenes de armas */
 .weapon-image {
   max-width: 100%;
   height: auto;
@@ -53,50 +58,100 @@
 }
 
 .weapon-image-small {
-  width: 250px;
+  width: 220px; /* Reducir aún más el tamaño de la imagen */
   height: auto;
 }
 
+/* Estadísticas */
 .weapon-stats {
   list-style: none;
   padding: 0;
+  text-align: center; /* Centrar el texto */
 }
 
 .weapon-stats li {
   margin: 5px 0;
 }
 
-/* Asegúrate de que las estrellas no llenas sean grises */
+/* Estilo de estrellas */
 .star {
   color: gray;
-  font-size: 20px; /* Ajusta según lo necesites */
+  font-size: 18px; /* Reducir tamaño de las estrellas */
 }
-.btnfinal {
-  background-color: gold;
-  width: 100px;
-  height: 30px;
-  border-color: gold;
-  margin-bottom: 0px;
-  cursor: pointer;
-}
-#cap {
-  margin-top: 10px;
-}
-/* Las estrellas llenas deben ser doradas */
+
 .star.filled {
   color: gold;
 }
-@media (max-width: 768px) {
+
+/* Botón */
+.btnfinal {
+  background-color: gold;
+  width: 90px; /* Reducir el tamaño del botón */
+  height: 25px;
+  border-color: gold;
+  margin-bottom: 0px;
+  cursor: pointer;
+  border-radius: 4px; /* Añadir bordes redondeados */
+  font-size: 14px; /* Ajustar tamaño de la fuente */
+}
+
+#cap {
+  margin-top: 10px;
+}
+
+/* Responsividad */
+@media (max-width: 1024px) {
   .weapon-cards-container {
     grid-template-columns: repeat(
       2,
       1fr
-    ); /* 2 columnas en pantallas más pequeñas */
+    ); /* 2 columnas en pantallas medianas */
+  }
+}
+
+@media (max-width: 768px) {
+  .weapon-cards-container {
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas en tablets */
+  }
+  .weapon-stats {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+    margin-bottom: 0px;
+    margin-top: 0px;
+  }
+  .card {
+    max-width: 320px; /* Ajuste aún más pequeño en tablets */
+    height: 400px; /* Reduce aún más la altura en tablets */
+  }
+
+  .weapon-image-small {
+    width: 200px; /* Reducir más la imagen en tablets */
   }
 }
 
 @media (max-width: 480px) {
   .weapon-cards-container {
-    grid-template-columns: 1fr; /* 1 columna en pantallas muy pequeñas */
+    grid-template-columns: 1fr; /* 1 columna en móviles */
+    gap: 8px; /* Reduce el espacio entre tarjetas */
+  }
+
+  .card {
+    max-width: 280px; /* Asegura que las tarjetas sean aún más pequeñas */
+    height: 350px; /* Ajuste de altura más pequeña */
+  }
+
+  .weapon-image-small {
+    width: 160px; /* Reduce aún más el tamaño de la imagen en móviles */
+  }
+
+  .star {
+    font-size: 16px; /* Reducción del tamaño de las estrellas en móviles */
+  }
+
+  .btnfinal {
+    width: 80px; /* Más pequeño el botón en móviles */
+    height: 32px; /* Reduce la altura del botón */
+    font-size: 12px; /* Ajustar tamaño de la fuente en móviles */
   }
 }

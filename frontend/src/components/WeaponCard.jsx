@@ -56,6 +56,7 @@ const WeaponCardItem = ({ weapon, onViewMore }) => {
   const handleFlip = () => {
     setFlipped(!flipped);
   };
+
   const navigate = useNavigate();
   const onViewMorecom = () => {
     // Navega a la página deseada
@@ -65,8 +66,9 @@ const WeaponCardItem = ({ weapon, onViewMore }) => {
   return (
     <div
       className={`card ${flipped ? "flipped" : ""}`}
-      onMouseEnter={handleFlip}
-      onMouseLeave={handleFlip}
+      onMouseEnter={handleFlip} // Para dispositivos de escritorio
+      onMouseLeave={handleFlip} // Para dispositivos de escritorio
+      onTouchStart={handleFlip} // Para dispositivos móviles
     >
       <div className="card-front">
         <h3>{weapon.name}</h3>

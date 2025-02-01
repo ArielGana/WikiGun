@@ -11,3 +11,19 @@
   flex: 2; /* Toma más espacio que la galería */
   margin-left: 10%;
 }
+
+/* Estilos para dispositivos móviles (por ejemplo, pantallas menores a 768px) */
+@media (max-width: 768px) {
+  .info-armas {
+    flex-direction: column; /* Cambia la dirección a columna */
+    align-items: center; /* Centra los elementos */
+    padding: 10px; /* Reduce el padding */
+    margin-bottom: 40px; /* Reduce el margen inferior */
+  }
+
+  .info-container {
+    margin-left: 0; /* Elimina el margen izquierdo */
+    text-align: center; /* Centra el texto */
+    width: 100%; /* Ocupa todo el ancho disponible */
+  }
+}

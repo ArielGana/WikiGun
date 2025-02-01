@@ -1,3 +1,4 @@
+/* Contenedor de las tarjetas de armas */
 .weapon-cards-container {
   display: flex;
   flex-wrap: wrap;
@@ -6,6 +7,7 @@
   padding: 20px;
 }
 
+/* Estilos de la tarjeta de arma */
 .weapon-card {
   background: black;
   border: 2px solid gold;
@@ -38,4 +40,51 @@
   color: #fff;
   font-size: 1rem;
   text-align: center;
+}
+
+/* Estilos Responsivos */
+@media screen and (max-width: 768px) {
+  /* Ajustar el contenedor para pantallas pequeñas */
+  .weapon-cards-container {
+    gap: 15px;
+    padding: 10px;
+  }
+
+  /* Cambiar el tamaño de las tarjetas en pantallas móviles */
+  .weapon-card {
+    width: 150px;
+  }
+
+  /* Reducir el tamaño de la imagen en pantallas móviles */
+  .weapon-card-image {
+    height: 120px;
+  }
+
+  /* Ajustar el tamaño del texto del título de las tarjetas en pantallas móviles */
+  .weapon-card-title {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  /* Ajustar el contenedor para pantallas muy pequeñas (celulares) */
+  .weapon-cards-container {
+    gap: 10px;
+    padding: 5px;
+  }
+
+  /* Cambiar el tamaño de las tarjetas aún más en pantallas pequeñas */
+  .weapon-card {
+    width: 120px;
+  }
+
+  /* Reducir aún más el tamaño de la imagen en pantallas pequeñas */
+  .weapon-card-image {
+    height: 100px;
+  }
+
+  /* Ajustar el tamaño del texto del título en pantallas muy pequeñas */
+  .weapon-card-title {
+    font-size: 0.9rem;
+  }
 }

@@ -1,3 +1,4 @@
+/* Estilos generales */
 .gallery {
   display: flex;
   flex-direction: column;
@@ -15,62 +16,42 @@
   height: 200px;
   transition: transform 0.2s;
 }
+
 .desman-image {
-  width: 1000px;
-  height: 250px;
+  width: 100%;
+  max-width: 1000px;
+  height: auto;
   margin-left: 25px;
 }
+
 .desmantelamiento {
-  width: 500px;
-  height: 200px;
+  width: 100%;
+  max-width: 500px;
+  height: auto;
   transition: transform 0.2s;
 }
+
 .desmantelamiento-container {
-  width: 584px;
+  width: 100%;
+  max-width: 584px;
   display: flex;
-  align-items: center; /* Alinea verticalmente */
-  gap: 10px; /* Espacio entre las imágenes */
+  align-items: center;
+  gap: 10px;
 }
+
 .download {
   max-width: 50px;
   cursor: pointer;
-  transition: transform 0.2s; /* Añade animación al hacer clic */
+  transition: transform 0.2s;
 }
 
 .download:hover {
-  transform: scale(1.1); /* Hace que el ícono crezca al pasar el ratón */
+  transform: scale(1.1);
 }
 
 .download:active {
-  transform: scale(0.9); /* Efecto de presionar el ícono */
+  transform: scale(0.9);
 }
-
-/* .controls {
-  position: absolute;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  gap: 420%; 
-  height: 50px;
-  left: -2px;
-}
-.icongal {
-  width: 30px;
-  height: 30px;
-}
-
-.control-button {
-  background-color: #f1be3149; 
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.control-button:hover {
-  background-color: #f1be31a1; */
 
 .thumbnail-container {
   display: flex;
@@ -88,8 +69,9 @@
 }
 
 .thumbnail:hover {
-  border-color: gold; /* Color del borde al pasar el mouse */
+  border-color: gold;
 }
+
 .modal {
   position: fixed;
   top: 0;
@@ -111,8 +93,9 @@
 }
 
 .expanded-image {
-  width: 800px;
-  height: 500px;
+  width: 90%;
+  max-width: 800px;
+  height: auto;
   margin: 0 auto;
 }
 
@@ -124,4 +107,44 @@
   font-weight: bold;
   color: gold;
   cursor: pointer;
+}
+
+/* Estilos responsivos */
+@media screen and (max-width: 768px) {
+  .main-image-container {
+    margin-left: 0;
+    text-align: center;
+  }
+
+  .main-image {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+  }
+
+  .desman-image {
+    max-width: 100%;
+    height: auto;
+    margin-left: 0;
+  }
+
+  .desmantelamiento-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .desmantelamiento {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .thumbnail {
+    width: 80px;
+    height: 40px;
+  }
+
+  .expanded-image {
+    width: 95%;
+    max-width: 600px;
+  }
 }

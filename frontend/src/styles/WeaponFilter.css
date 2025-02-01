@@ -1,13 +1,16 @@
 .weapon-page {
   display: flex;
+  flex-direction: row; /* Mantiene la disposición en escritorio */
   background-color: black;
   color: white;
   min-height: 100vh;
 }
 
+/* Contenedor de filtros */
 .weapon-filter-container {
   padding: 20px;
   border-right: 1px solid #333;
+  width: 250px; /* Mantiene un ancho fijo en escritorio */
 }
 
 .filter-section h3,
@@ -27,7 +30,7 @@
   margin-bottom: 5px;
   transition: background-color 0.2s ease;
   width: 100%;
-  width: 170px;
+  max-width: 170px;
 }
 
 .filter-section li:hover,
@@ -35,6 +38,7 @@
   background-color: goldenrod;
 }
 
+/* Input de búsqueda */
 .search-section input {
   width: 170px;
   padding: 10px;
@@ -44,8 +48,9 @@
   color: white;
 }
 
+/* Contenedor de tarjetas de armas */
 .weapon-cards {
-  width: 75%;
+  width: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
@@ -69,4 +74,59 @@
   width: 100%;
   border-radius: 8px;
   margin-bottom: 10px;
+}
+
+/* RESPONSIVIDAD */
+
+/* Ajuste en tablets */
+@media (max-width: 1024px) {
+  .weapon-page {
+    flex-direction: column; /* Apila los elementos en dispositivos medianos */
+    align-items: center;
+  }
+
+  .weapon-filter-container {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #333;
+    text-align: center;
+  }
+
+  .weapon-cards {
+    width: 100%;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+}
+
+/* Ajuste en móviles */
+@media (max-width: 768px) {
+  .weapon-page {
+    flex-direction: column;
+  }
+
+  .weapon-filter-container {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .search-section input {
+    width: 100%;
+  }
+
+  .weapon-cards {
+    width: 100%;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+}
+
+/* Ajuste en pantallas muy pequeñas */
+@media (max-width: 480px) {
+  .weapon-cards {
+    grid-template-columns: 1fr; /* 1 sola columna en pantallas pequeñas */
+  }
+
+  .filter-section li {
+    width: 100%;
+    max-width: none;
+  }
 }

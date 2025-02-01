@@ -7,48 +7,53 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  /* Puedes ajustar el ancho como desees */
-  /* Establecer un ancho máximo para no hacer el contenedor demasiado grande en pantallas grandes */
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .comparison-box h3 {
   font-size: 18px;
   margin-bottom: 10px;
+  text-align: center;
+  color: gold;
 }
 
 .comparison-grid {
   display: flex;
-  justify-content: space-between; /* Distribuye los elementos de manera horizontal */
-  gap: 20px; /* Espacio entre las armas */
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap; /* Permite que los elementos se envuelvan en pantallas pequeñas */
 }
 
 .comparison-item {
   display: flex;
-  flex-direction: column; /* Coloca la imagen y el nombre de manera vertical */
+  flex-direction: column;
   align-items: center;
   background-color: black;
   padding: 10px;
   border: 2px solid gold;
-  /* Ajusta el tamaño de cada arma */
   transition: transform 0.3s ease;
+  width: calc(
+    50% - 10px
+  ); /* Ajusta el ancho para que quepan dos elementos por fila */
+  box-sizing: border-box;
 }
 
 .comparison-item:hover {
-  transform: scale(
-    1.05
-  ); /* Añade un efecto de agrandamiento al pasar el mouse */
+  transform: scale(1.05);
 }
 
 .comparison-item img {
-  width: 300px; /* Ajusta el tamaño de las imágenes de las armas */
-  height: 150px;
+  width: 100%; /* Ajusta el ancho de la imagen al 100% del contenedor */
+  height: auto; /* Mantiene la proporción de la imagen */
   border-radius: 5px;
-  margin-bottom: 10px; /* Espacio debajo de la imagen */
+  margin-bottom: 10px;
 }
 
 .comparison-item h4 {
   font-size: 16px;
   margin-bottom: 10px;
+  color: white;
 }
 
 .comparison-item p {
@@ -70,16 +75,11 @@
 .remove-button:hover {
   background-color: darkred;
 }
+
 .comparison-container {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
-  gap: 20px;
-}
-
-.comparison-grid {
-  display: flex;
-  flex-direction: row;
   gap: 20px;
 }
 
@@ -89,8 +89,8 @@
   padding: 15px;
   border-radius: 8px;
   text-align: center;
-
-  flex-grow: 1;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .comparison-results h4 {
@@ -108,6 +108,7 @@
   text-align: center;
   border: 1px solid white;
 }
+
 .details-cell {
   background-color: #f9f9f9;
   padding: 10px;
@@ -127,44 +128,12 @@
 .expand-button:hover {
   background-color: #0056b3;
 }
-.comparison-box {
-  width: 100%;
-  padding: 20px;
-  background-color: black;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  font-family: Arial, sans-serif;
-  color: gold;
-}
-
-.comparison-box h3 {
-  text-align: center;
-  color: gold;
-}
-
-.comparison-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.comparison-item {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.comparison-item h4 {
-  color: white;
-  margin: 0;
-  font-size: 16px;
-}
 
 .best-attributes {
   display: flex;
   justify-content: space-between;
   margin-top: 20px;
+  flex-wrap: wrap; /* Permite que los elementos se envuelvan en pantallas pequeñas */
 }
 
 .best-weapon {
@@ -173,6 +142,7 @@
   padding: 15px;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
 }
 
 .best-weapon h5 {
@@ -230,14 +200,57 @@ table tr:nth-child(even) {
   background-color: black;
 }
 
+/* Media query para dispositivos móviles */
 @media (max-width: 768px) {
+  .comparison-item {
+    width: 100%; /* Hace que los elementos ocupen todo el ancho en pantallas pequeñas */
+  }
+
   .best-attributes {
     flex-direction: column;
     align-items: center;
   }
 
   .best-weapon {
-    width: 80%;
+    width: 100%; /* Hace que los elementos ocupen todo el ancho en pantallas pequeñas */
     margin-bottom: 20px;
+  }
+
+  .comparison-results table {
+    font-size: 14px; /* Reduce el tamaño de la fuente para mejorar la legibilidad */
+  }
+
+  .comparison-results th,
+  .comparison-results td {
+    padding: 8px; /* Ajusta el padding para pantallas pequeñas */
+  }
+}
+
+/* Media query para pantallas muy pequeñas (ej: smartphones pequeños) */
+@media (max-width: 480px) {
+  .comparison-item img {
+    height: 120px; /* Reduce la altura de la imagen para ahorrar espacio */
+  }
+
+  .comparison-item h4 {
+    font-size: 14px; /* Reduce el tamaño de la fuente del título */
+  }
+
+  .comparison-item p {
+    font-size: 12px; /* Reduce el tamaño de la fuente del párrafo */
+  }
+
+  .remove-button {
+    width: 80px; /* Reduce el ancho del botón */
+    font-size: 12px; /* Reduce el tamaño de la fuente del botón */
+  }
+
+  .comparison-results table {
+    font-size: 12px; /* Reduce más el tamaño de la fuente para pantallas muy pequeñas */
+  }
+
+  .comparison-results th,
+  .comparison-results td {
+    padding: 5px; /* Ajusta el padding para pantallas muy pequeñas */
   }
 }

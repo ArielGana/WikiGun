@@ -1,15 +1,22 @@
 .vid {
   display: flex;
-}
-.video-container {
-  display: flex;
-  margin-top: 150px;
-  z-index: 10;
-  position: absolute;
-  margin-left: -20%;
-  width: 50%;
+  flex-direction: column;
+  align-items: center;
 }
 
+.video-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  margin-top: 150px;
+  width: 50%;
+  z-index: 10;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Botón */
 .view-more-button {
   padding: 10px 20px;
   font-size: 16px;
@@ -25,12 +32,58 @@
 .view-more-button:hover {
   background-color: #b39e00;
 }
+
+/* Banner de video */
 .bannervid {
   transition: height 0.3s ease;
-  height: 100px; /* Altura inicial */
-  overflow: hidden; /* Opcional para evitar contenido desbordado */
+  height: 100px;
+  overflow: hidden;
 }
 
 .bannervid.expanded {
-  height: 400px; /* Altura inicial + 400px */
+  height: 400px;
+}
+
+/* Responsivo para móviles */
+@media (max-width: 768px) {
+  .video-container {
+    width: 90%;
+    margin-top: 100px;
+    position: relative;
+  }
+
+  .view-more-button {
+    font-size: 14px;
+    padding: 8px 16px;
+    height: 45px;
+  }
+
+  .bannervid {
+    height: 80px;
+  }
+
+  .bannervid.expanded {
+    height: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .video-container {
+    width: 100%;
+    margin-top: 80px;
+  }
+
+  .view-more-button {
+    font-size: 12px;
+    padding: 6px 12px;
+    height: 40px;
+  }
+
+  .bannervid {
+    height: 60px;
+  }
+
+  .bannervid.expanded {
+    height: 250px;
+  }
 }
