@@ -41,7 +41,9 @@ router.get("/armas", async (req, res) => {
     return res.status(200).json(rows); // Devolvemos los resultados como JSON
   } catch (err) {
     console.error("Error al obtener las armas", err);
-    return res.status(500).json({ message: "Error al obtener las armas" });
+    return res
+      .status(500)
+      .json({ message: "Error al obtener las armas" + err });
   }
 });
 
